@@ -54,17 +54,10 @@ void cheat::hook()
 
 void cheat::exit()
 {
-    while (!gvalue::is_exit)
+    while (!gvalue::is_clean)
     {
-        Sleep(100);
+        Sleep(1);
     }
-
-    SDK::UWorld* world = SDK::UWorld::GetWorld();
-
-    SetWindowLongPtrA(FindWindow(L"UnrealWindow", nullptr), GWLP_WNDPROC, (LONG_PTR)gvalue::def_wnd_proc);
-
-    gvalue::vtb[gconst::post_render_index] = gvalue::def_post_render;
-
     FreeLibraryAndExitThread(gvalue::dll_inst, 0);
 }
 
@@ -79,6 +72,13 @@ void cheat::hk_post_render(void* thisptr, SDK::UCanvas* canvas)
     menu::main();
 
     gvalue::def_post_render(thisptr, canvas);
+
+    if (gvalue::is_exit)
+    {
+        SetWindowLongPtrA(FindWindow(L"UnrealWindow", nullptr), GWLP_WNDPROC, (LONG_PTR)gvalue::def_wnd_proc);
+        gvalue::vtb[gconst::post_render_index] = gvalue::def_post_render;
+        gvalue::is_clean = true;
+    }
 }
 
 LRESULT cheat::hk_wnd_proc(HWND hwnd, UINT u_msg, WPARAM w_param, LPARAM l_param)

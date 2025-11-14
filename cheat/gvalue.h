@@ -30,6 +30,7 @@ namespace gvalue
 	inline bool menu_open = true;
 	inline s_mouse mouse_input = {};
 	inline bool is_exit = false;
+	inline bool is_clean = false;
 
 	inline SDK::UWorld* world;
 	inline SDK::APlayerController* controller;
