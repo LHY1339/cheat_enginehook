@@ -86,14 +86,13 @@ void menu::base_draw()
 {
 	render::fill_box(
 		SDK::FVector2D(menu_x - 2, menu_y - 2),
-		SDK::FVector2D(menu_w + 4, menu_h + 4), 
-		SDK::FLinearColor(0.2f, 0.2f, 0.6f, 1.0f)
+		SDK::FVector2D(menu_w + 4, menu_h + 4),
+		SDK::FLinearColor(0.2f, 0.2f, 0.2f, 1.0f)
 	);
-
 	render::fill_box(
 		SDK::FVector2D(menu_x, menu_y),
 		SDK::FVector2D(menu_w, menu_h),
-		SDK::FLinearColor(0.02f, 0.02f, 0.06f, 1.0f)
+		SDK::FLinearColor(0.01f, 0.01f, 0.01f, 1.0f)
 	);
 }
 
