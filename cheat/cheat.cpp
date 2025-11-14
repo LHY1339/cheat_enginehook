@@ -8,6 +8,7 @@
 #include "gconst.h"
 #include "menu.h"
 #include "visual.h"
+#include "gui.h"
 
 #pragma warning(disable:4996)
 
@@ -68,6 +69,7 @@ void cheat::hk_post_render(void* thisptr, SDK::UCanvas* canvas)
     gvalue::canvas = canvas;
     gvalue::engine = SDK::UEngine::GetEngine();
 
+    gui::main();
     visual::main();
     menu::main();
 
